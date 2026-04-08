@@ -12,24 +12,24 @@
   data-label-thinking="{{ ui_text('正在思考', 'Thinking') }}"
   data-label-analysis-title="{{ ui_text('WriteClaw 分析', 'WriteClaw analysis') }}"
   data-label-next-questions="{{ ui_text('下一步问题', 'Next questions') }}"
-  data-label-current-brief="{{ ui_text('当前简报', 'Current brief') }}"
-  data-label-next-answers="{{ ui_text('建议补充', 'Suggested next answers') }}"
-  data-label-readiness="{{ ui_text('准备度', 'Readiness') }}"
-  data-label-no-conversation="{{ ui_text('还没有对话记录。', 'No conversation yet.') }}"
-  data-label-empty-title="{{ ui_text('开始新会话', 'Start a new conversation') }}"
-  data-label-empty-body="{{ ui_text('输入目标后，WriteClaw 会在这里持续协作。', 'WriteClaw will keep working here after you send the goal.') }}"
-  data-label-continuing="{{ ui_text('WriteClaw 正在继续处理...', 'WriteClaw is continuing...') }}"
-  data-label-run-started="{{ ui_text('正式写作已启动，正在切换到实时运行视图...', 'The writing run has started. Switching to live run view...') }}"
+  data-label-current-brief="{{ ui_text('当前简报', 'Current brief', 'Bản tóm tắt hiện tại') }}"
+  data-label-next-answers="{{ ui_text('建议补充', 'Suggested next answers', 'Câu trả lời gợi ý') }}"
+  data-label-readiness="{{ ui_text('准备度', 'Readiness', 'Độ sẵn sàng') }}"
+  data-label-no-conversation="{{ ui_text('还没有对话记录。', 'No conversation yet.', 'Chưa có cuộc trò chuyện nào.') }}"
+  data-label-empty-title="{{ ui_text('开始新会话', 'Start a new conversation', 'Bắt đầu cuộc trò chuyện mới') }}"
+  data-label-empty-body="{{ ui_text('输入目标后，WriteClaw 会在这里持续协作。', 'WriteClaw will keep working here after you send the goal.', 'WriteClaw sẽ tiếp tục làm việc ở đây sau khi bạn gửi mục tiêu.') }}"
+  data-label-continuing="{{ ui_text('WriteClaw 正在继续处理...', 'WriteClaw is continuing...', 'WriteClaw đang tiếp tục xử lý...') }}"
+  data-label-run-started="{{ ui_text('正式写作已启动，正在切换到实时运行视图...', 'The writing run has started. Switching to live run view...', 'Tác vụ viết đã bắt đầu. Đang chuyển sang chế độ xem trực tiếp...') }}"
   {% endif %}>
   <div class="chat-stage chat-stage-full">
     <div class="chat-main-stack chat-main-stack--immersive">
       <header class="chat-hero-card chat-hero-card--compact">
         <div class="chat-hero-copy">
-          <div class="chat-hero-kicker">{{ ui_text('任务台', 'Mission control') }}</div>
-          <h1>{{ ui_text('Claw 创作台', 'Claw Studio') }}</h1>
+          <div class="chat-hero-kicker">{{ ui_text('任务台', 'Mission control', 'Bảng điều khiển nhiệm vụ') }}</div>
+          <h1>{{ ui_text('Claw 创作台', 'Claw Studio', 'Claw Studio') }}</h1>
           {% if chat_session %}
           {% set current_provider = provider_specs.get(chat_session.provider) %}
-          <div class="chat-hero-note">{{ ui_text('把需求、修改和续写都压在一个线程里，避免在一堆后台页面之间反复切换。', 'Keep briefs, revisions, and continue-writing prompts inside one thread instead of bouncing between admin-like pages.') }}</div>
+          <div class="chat-hero-note">{{ ui_text('把需求、修改和续写都压在一个线程里，避免在一堆后台页面之间反复切换。', 'Keep briefs, revisions, and continue-writing prompts inside one thread instead of bouncing between admin-like pages.', 'Giữ yêu cầu, sửa đổi và lời nhắc tiếp tục viết trong một luồng thay vì chuyển đổi giữa các trang quản trị.') }}</div>
           <div class="chat-hero-meta">
             <span>#{{ chat_session.id }}</span>
             <span>{{ current_provider.label if current_provider else chat_session.provider|upper }}</span>
@@ -116,12 +116,12 @@
           </section>
           {% else %}
           <section class="chat-side-card chat-side-card--empty">
-            <div class="chat-side-kicker">{{ ui_text('开始', 'Start') }}</div>
-            <div class="chat-side-title">{{ ui_text('先给一个明确任务', 'Start with a clear mission') }}</div>
-            <div class="chat-side-note">{{ ui_text('输入题材、角色、风格、约束，或者直接让它开始写。会话一旦建立，后续推进都会留在这个主线程里。', 'Describe genre, cast, tone, and constraints, or directly tell it to start writing. Once the conversation exists, all follow-up work stays in this main thread.') }}</div>
+            <div class="chat-side-kicker">{{ ui_text('开始', 'Start', 'Bắt đầu') }}</div>
+            <div class="chat-side-title">{{ ui_text('先给一个明确任务', 'Start with a clear mission', 'Bắt đầu với một nhiệm vụ rõ ràng') }}</div>
+            <div class="chat-side-note">{{ ui_text('输入题材、角色、风格、约束，或者直接让它开始写。会话一旦建立，后续推进都会留在这个主线程里。', 'Describe genre, cast, tone, and constraints, or directly tell it to start writing. Once the conversation exists, all follow-up work stays in this main thread.', 'Mô tả thể loại, nhân vật, giọng điệu và ràng buộc, hoặc trực tiếp yêu cầu bắt đầu viết. Khi cuộc trò chuyện tồn tại, tất cả công việc tiếp theo sẽ ở trong luồng chính này.') }}</div>
             <div class="chat-mini-grid">
               <div class="chat-mini-stat">
-                <span>{{ ui_text('模式', 'Mode') }}</span>
+                <span>{{ ui_text('模式', 'Mode', 'Chế độ') }}</span>
                 <strong>{{ status_summary.agent_mode }}</strong>
               </div>
               <div class="chat-mini-stat">
@@ -160,13 +160,13 @@
           <div class="chat-thread-card chat-thread-card--command">
             <div class="chat-thread-head">
               <div>
-                <div class="chat-thread-kicker">{{ ui_text('主线程', 'Main thread') }}</div>
-                <h2>{{ ui_text('对话流', 'Conversation') }}</h2>
+                <div class="chat-thread-kicker">{{ ui_text('主线程', 'Main thread', 'Luồng chính') }}</div>
+                <h2>{{ ui_text('对话流', 'Conversation', 'Cuộc trò chuyện') }}</h2>
               </div>
               {% if chat_session %}
               {% set current_provider = provider_specs.get(chat_session.provider) %}
               <div class="chat-thread-pills">
-                <span class="slim-pill">{{ ui_text('轮次', 'Rounds') }} {{ chat_session.round_count }}</span>
+                <span class="slim-pill">{{ ui_text('轮次', 'Rounds', 'Vòng') }} {{ chat_session.round_count }}</span>
                 <span class="slim-pill">{{ session_status_text(chat_session.status) }}</span>
                 <span class="slim-pill">{{ current_provider.label if current_provider else chat_session.provider|upper }}</span>
               </div>
@@ -214,8 +214,8 @@
                 <div class="avatar-circle">WC</div>
                 <div class="assistant-panel">
                   <div class="assistant-section">
-                    <div class="assistant-title">{{ ui_text('开始新会话', 'Start a new conversation') }}</div>
-                    <div class="assistant-text">{{ ui_text('先在下方输入需求，后续对话和写作都会持续留在这个主线程中。', 'Use the composer below to start. The full collaboration stays in this main thread.') }}</div>
+                    <div class="assistant-title">{{ ui_text('开始新会话', 'Start a new conversation', 'Bắt đầu cuộc trò chuyện mới') }}</div>
+                    <div class="assistant-text">{{ ui_text('先在下方输入需求，后续对话和写作都会持续留在这个主线程中。', 'Use the composer below to start. The full collaboration stays in this main thread.', 'Sử dụng ô soạn thảo bên dưới để bắt đầu. Toàn bộ cộng tác sẽ ở trong luồng chính này.') }}</div>
                   </div>
                 </div>
               </div>

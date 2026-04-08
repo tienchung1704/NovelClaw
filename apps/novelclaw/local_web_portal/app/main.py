@@ -79,6 +79,170 @@ EVENT_LABELS_ZH = {
 }
 
 
+_VI_FALLBACKS: Dict[str, str] = {
+    "Creative Writing Console": "Bảng Điều Khiển Sáng Tác",
+    "Create": "Tạo mới",
+    "Writing Chat": "Trò chuyện Viết",
+    "Storyboard": "Bảng Kịch bản",
+    "Style Guide": "Hướng dẫn Phong cách",
+    "Assets": "Tài nguyên",
+    "Manuscripts": "Bản thảo",
+    "Drafts & Memory": "Bản thảo & Bộ nhớ",
+    "Characters": "Nhân vật",
+    "World": "Thế giới quan",
+    "Capabilities": "Khả năng",
+    "Skills": "Kỹ năng",
+    "Agent Config": "Cấu hình Agent",
+    "Control": "Điều khiển",
+    "Sessions": "Phiên làm việc",
+    "Runs": "Tác vụ chạy",
+    "Status": "Trạng thái",
+    "Setup": "Thiết lập",
+    "Models": "Mô hình",
+    "Environment": "Môi trường",
+    "NovelClaw running": "NovelClaw đang chạy",
+    "mode": "chế độ",
+    "max_steps": "số bước tối đa",
+    "Saved": "Đã lưu",
+    "Not saved": "Chưa lưu",
+    "No providers yet.": "Chưa có nhà cung cấp nào.",
+    "Save API Key": "Lưu API Key",
+    "Select a provider": "Chọn nhà cung cấp",
+    "Enter API key": "Nhập API key",
+    "Providers": "Nhà cung cấp",
+    "Save Provider": "Lưu nhà cung cấp",
+    "Delete": "Xóa",
+    "New conversation": "Cuộc trò chuyện mới",
+    "Current session": "Phiên hiện tại",
+    "Open details": "Xem chi tiết",
+    "Delete current conversation": "Xóa cuộc trò chuyện hiện tại",
+    "You": "Bạn",
+    "Thinking": "Đang suy nghĩ",
+    "NovelClaw analysis": "Phân tích NovelClaw",
+    "Next questions": "Câu hỏi tiếp theo",
+    "Current writing brief": "Bản tóm tắt viết hiện tại",
+    "Readiness": "Độ sẵn sàng",
+    "No conversation yet.": "Chưa có cuộc trò chuyện nào.",
+    "Welcome to NovelClaw": "Chào mừng đến với NovelClaw",
+    "Execution mode": "Chế độ thực thi",
+    "Active sessions": "Phiên hoạt động",
+    "Running jobs": "Tác vụ đang chạy",
+    "Dynamic memory": "Bộ nhớ động",
+    "NovelClaw Status": "Trạng thái NovelClaw",
+    "Start a new writing session": "Bắt đầu phiên viết mới",
+    "Start NovelClaw": "Khởi động NovelClaw",
+    "Recent sessions": "Phiên gần đây",
+    "New session": "Phiên mới",
+    "rounds": "vòng",
+    "Open": "Mở",
+    "Details": "Chi tiết",
+    "Current Project": "Dự án hiện tại",
+    "Plot points": "Điểm cốt truyện",
+    "World facts": "Sự kiện thế giới",
+    "Chapter outputs": "Đầu ra chương",
+    "Current collaboration session": "Phiên cộng tác hiện tại",
+    "Rounds": "Vòng",
+    "Provider": "Nhà cung cấp",
+    "Continue refining": "Tiếp tục tinh chỉnh",
+    "Back to workspace": "Quay lại không gian làm việc",
+    "Delete conversation": "Xóa cuộc trò chuyện",
+    "Idea Refinement": "Tinh chỉnh ý tưởng",
+    "Idea Refinement Session": "Phiên tinh chỉnh ý tưởng",
+    "Current Idea Status": "Trạng thái ý tưởng hiện tại",
+    "Original Idea": "Ý tưởng gốc",
+    "Current Refined Draft": "Bản thảo đã tinh chỉnh",
+    "Confirm the refined idea and start generation": "Xác nhận ý tưởng và bắt đầu tạo",
+    "Cancel session": "Hủy phiên",
+    "Conversation": "Cuộc trò chuyện",
+    "Submit and continue refining": "Gửi và tiếp tục tinh chỉnh",
+    "Open generation job": "Mở tác vụ tạo",
+    "This session has ended.": "Phiên này đã kết thúc.",
+    "Refresh Status": "Làm mới trạng thái",
+    "Refresh Runs": "Làm mới tác vụ",
+    "Refresh Workspace": "Làm mới không gian làm việc",
+    "Workspace Overview": "Tổng quan không gian làm việc",
+    "Draft Texts": "Văn bản thảo",
+    "Chapter Files": "Tệp chương",
+    "Memory Banks": "Ngân hàng bộ nhớ",
+    "Chapter Outputs": "Đầu ra chương",
+    "Workspace Files": "Tệp không gian làm việc",
+    "No workspace files to show yet.": "Chưa có tệp nào để hiển thị.",
+    "Character Entry": "Mục nhân vật",
+    "No character data yet.": "Chưa có dữ liệu nhân vật.",
+    "World Settings": "Cài đặt thế giới",
+    "Continuity Facts": "Sự kiện liên tục",
+    "No world data yet.": "Chưa có dữ liệu thế giới.",
+    "No fact cards yet.": "Chưa có thẻ sự kiện.",
+    "Outlines": "Dàn ý",
+    "Outline": "Dàn ý",
+    "Plot Beats": "Nhịp cốt truyện",
+    "No outline items yet.": "Chưa có mục dàn ý.",
+    "No plot beats yet.": "Chưa có nhịp cốt truyện.",
+    "Style Summary": "Tóm tắt phong cách",
+    "Style Tags": "Thẻ phong cách",
+    "No style tags yet.": "Chưa có thẻ phong cách.",
+    "Open Questions": "Câu hỏi mở",
+    "No open questions right now.": "Hiện không có câu hỏi mở.",
+    "created": "đã tạo",
+    "No runs yet.": "Chưa có tác vụ nào.",
+    "API Health": "Tình trạng API",
+    "Max Steps": "Số bước tối đa",
+    "Active Sessions": "Phiên hoạt động",
+    "Running Jobs": "Tác vụ đang chạy",
+    "Total Jobs": "Tổng số tác vụ",
+    "No environment values to display.": "Không có giá trị môi trường để hiển thị.",
+    "Writing Skills": "Kỹ năng viết",
+    "Core Always On": "Lõi luôn bật",
+    "Enabled": "Đã bật",
+    "Disabled": "Đã tắt",
+    "Disable": "Tắt",
+    "Enable": "Bật",
+    "Loop Config": "Cấu hình vòng lặp",
+    "Execution Mode": "Chế độ thực thi",
+    "Latest Run": "Chạy mới nhất",
+    "Routing Logic": "Logic định tuyến",
+    "Generation Job Detail": "Chi tiết tác vụ tạo",
+    "Job": "Tác vụ",
+    "Queued": "Đang chờ",
+    "Running": "Đang chạy",
+    "Succeeded": "Thành công",
+    "Failed": "Thất bại",
+    "Canceled": "Đã hủy",
+    "Unknown": "Không rõ",
+    "Cancel this job": "Hủy tác vụ này",
+    "Job Input": "Đầu vào tác vụ",
+    "Run ID": "ID chạy",
+    "Output Path": "Đường dẫn đầu ra",
+    "Download Full Output": "Tải xuống đầu ra đầy đủ",
+    "Download All Chapters (.zip)": "Tải xuống tất cả chương (.zip)",
+    "Execution Status": "Trạng thái thực thi",
+    "Phase": "Giai đoạn",
+    "Elapsed": "Đã trôi qua",
+    "Idle": "Nhàn rỗi",
+    "Current action": "Hành động hiện tại",
+    "Chapter progress": "Tiến độ chương",
+    "Chapter words": "Số từ chương",
+    "Total words": "Tổng số từ",
+    "Memory": "Bộ nhớ",
+    "Texts": "Văn bản",
+    "Worlds": "Thế giới",
+    "Facts": "Sự kiện",
+    "Live Progress": "Tiến độ trực tiếp",
+    "No worker log yet.": "Chưa có nhật ký worker.",
+    "Progress Log": "Nhật ký tiến độ",
+    "No progress log yet.": "Chưa có nhật ký tiến độ.",
+    "Claw / Agent Trace": "Dấu vết Claw / Agent",
+    "No Claw / Agent events yet.": "Chưa có sự kiện Claw / Agent.",
+    "Chapter Results": "Kết quả chương",
+    "Chapter": "Chương",
+    "Iteration": "Lần lặp",
+    "Download Chapter": "Tải xuống chương",
+    "No chapter output yet.": "Chưa có đầu ra chương.",
+    "Error": "Lỗi",
+    "Generated Text": "Văn bản đã tạo",
+    "Result": "Kết quả",
+}
+
 _ZH_FALLBACKS: Dict[str, str] = {
     "Creative Writing Console": "创作控制台",
     "Create": "创作",
@@ -273,69 +437,72 @@ _ZH_FALLBACKS: Dict[str, str] = {
 }
 
 
-def _lang_text(lang: str, zh: str, en: str) -> str:
-    if str(lang or "").lower().startswith("en"):
+def _lang_text(lang: str, zh: str, en: str, vi: str = "") -> str:
+    lang_lower = str(lang or "").lower()
+    if lang_lower.startswith("vi"):
+        return vi if vi else _VI_FALLBACKS.get(en, en)
+    if lang_lower.startswith("en"):
         return en
     return _ZH_FALLBACKS.get(en, zh)
 
 
 def _ui_language(request: Request) -> str:
     session_lang = str(request.session.get("ui_language", "") or "").lower()
-    if session_lang in {"zh", "en"}:
+    if session_lang in {"en", "vi"}:
         return session_lang
     configured = str(settings.ui_language or "").lower()
-    return configured if configured in {"zh", "en"} else "en"
+    return configured if configured in {"en", "vi"} else "en"
 
 
-def _ui_text(lang: str, zh: str, en: str) -> str:
-    return _lang_text(lang, zh, en)
+def _ui_text(lang: str, zh: str, en: str, vi: str = "") -> str:
+    return _lang_text(lang, zh, en, vi)
 
 
 def _console_texts(lang: str) -> Dict[str, str]:
     return {
-        "brand_subtitle": _ui_text(lang, "创作控制台", "Creative Writing Console"),
-        "nav_create": _ui_text(lang, "创作", "Create"),
-        "nav_chat": _ui_text(lang, "写作对话", "Writing Chat"),
-        "nav_storyboard": _ui_text(lang, "故事板", "Storyboard"),
-        "nav_style": _ui_text(lang, "风格指南", "Style Guide"),
-        "nav_assets": _ui_text(lang, "资产", "Assets"),
-        "nav_manuscripts": _ui_text(lang, "稿件与记忆", "Drafts & Memory"),
-        "nav_characters": _ui_text(lang, "角色", "Characters"),
-        "nav_world": _ui_text(lang, "世界观", "World"),
-        "nav_capabilities": _ui_text(lang, "能力", "Capabilities"),
-        "nav_skills": _ui_text(lang, "技能", "Skills"),
+        "brand_subtitle": _ui_text(lang, "创作控制台", "Creative Writing Console", "Bảng Điều Khiển Sáng Tác"),
+        "nav_create": _ui_text(lang, "创作", "Create", "Tạo mới"),
+        "nav_chat": _ui_text(lang, "写作对话", "Writing Chat", "Trò chuyện Viết"),
+        "nav_storyboard": _ui_text(lang, "故事板", "Storyboard", "Bảng Kịch bản"),
+        "nav_style": _ui_text(lang, "风格指南", "Style Guide", "Hướng dẫn Phong cách"),
+        "nav_assets": _ui_text(lang, "资产", "Assets", "Tài nguyên"),
+        "nav_manuscripts": _ui_text(lang, "稿件与记忆", "Drafts & Memory", "Bản thảo & Bộ nhớ"),
+        "nav_characters": _ui_text(lang, "角色", "Characters", "Nhân vật"),
+        "nav_world": _ui_text(lang, "世界观", "World", "Thế giới quan"),
+        "nav_capabilities": _ui_text(lang, "能力", "Capabilities", "Khả năng"),
+        "nav_skills": _ui_text(lang, "技能", "Skills", "Kỹ năng"),
         "nav_mcp": "MCP",
-        "nav_agents": _ui_text(lang, "Agent 配置", "Agent Config"),
-        "nav_control": _ui_text(lang, "控制", "Control"),
-        "nav_sessions": _ui_text(lang, "会话", "Sessions"),
-        "nav_runs": _ui_text(lang, "运行任务", "Runs"),
-        "nav_status": _ui_text(lang, "状态", "Status"),
-        "nav_setup": _ui_text(lang, "设置", "Setup"),
-        "nav_models": _ui_text(lang, "模型", "Models"),
-        "nav_environment": _ui_text(lang, "环境", "Environment"),
-        "runtime_running": _ui_text(lang, "NovelClaw 运行中", "NovelClaw running"),
-        "runtime_mode": _ui_text(lang, "模式", "mode"),
-        "runtime_max_steps": _ui_text(lang, "最大步数", "max_steps"),
-        "lang_zh": "中文",
+        "nav_agents": _ui_text(lang, "Agent 配置", "Agent Config", "Cấu hình Agent"),
+        "nav_control": _ui_text(lang, "控制", "Control", "Điều khiển"),
+        "nav_sessions": _ui_text(lang, "会话", "Sessions", "Phiên làm việc"),
+        "nav_runs": _ui_text(lang, "运行任务", "Runs", "Tác vụ chạy"),
+        "nav_status": _ui_text(lang, "状态", "Status", "Trạng thái"),
+        "nav_setup": _ui_text(lang, "设置", "Setup", "Thiết lập"),
+        "nav_models": _ui_text(lang, "模型", "Models", "Mô hình"),
+        "nav_environment": _ui_text(lang, "环境", "Environment", "Môi trường"),
+        "runtime_running": _ui_text(lang, "NovelClaw 运行中", "NovelClaw running", "NovelClaw đang chạy"),
+        "runtime_mode": _ui_text(lang, "模式", "mode", "chế độ"),
+        "runtime_max_steps": _ui_text(lang, "最大步数", "max_steps", "số bước tối đa"),
         "lang_en": "EN",
-        "models_page_title": _ui_text(lang, "模型配置", "Models"),
-        "models_page_desc": _ui_text(lang, "配置 NovelClaw 使用的提供商、模型与 API Key。", "Configure the providers, models, and API keys used by NovelClaw."),
-        "models_heading_providers": _ui_text(lang, "已配置提供商", "Providers"),
-        "models_api_key_label": _ui_text(lang, "API Key：", "API key:"),
-        "models_saved": _ui_text(lang, "已保存", "Saved"),
-        "models_not_saved": _ui_text(lang, "未保存", "Not saved"),
-        "models_no_providers": _ui_text(lang, "还没有提供商。", "No providers yet."),
-        "models_save_api_key": _ui_text(lang, "保存 API Key", "Save API Key"),
-        "models_select_provider": _ui_text(lang, "选择提供商", "Select a provider"),
-        "models_enter_api_key": _ui_text(lang, "输入 API Key", "Enter API key"),
-        "models_api_key_note": _ui_text(lang, "Key 会加密保存到本地数据库。", "Keys are encrypted before being stored in the local database."),
-        "models_provider_form": _ui_text(lang, "新增或更新提供商", "Add or update provider"),
-        "models_slug_placeholder": _ui_text(lang, "唯一标识，例如 openrouter_custom", "Unique slug, e.g. openrouter_custom"),
-        "models_label_placeholder": _ui_text(lang, "显示名称", "Display label"),
-        "models_base_url_placeholder": _ui_text(lang, "基础 URL", "Base URL"),
-        "models_model_placeholder": _ui_text(lang, "模型名", "Model name"),
-        "models_save_provider": _ui_text(lang, "保存提供商", "Save Provider"),
-        "models_delete_provider": _ui_text(lang, "删除", "Delete"),
+        "lang_vi": "VI",
+        "models_page_title": _ui_text(lang, "模型配置", "Models", "Mô hình"),
+        "models_page_desc": _ui_text(lang, "配置 NovelClaw 使用的提供商、模型与 API Key。", "Configure the providers, models, and API keys used by NovelClaw.", "Cấu hình nhà cung cấp, mô hình và API Key cho NovelClaw."),
+        "models_heading_providers": _ui_text(lang, "已配置提供商", "Providers", "Nhà cung cấp"),
+        "models_api_key_label": _ui_text(lang, "API Key：", "API key:", "API key:"),
+        "models_saved": _ui_text(lang, "已保存", "Saved", "Đã lưu"),
+        "models_not_saved": _ui_text(lang, "未保存", "Not saved", "Chưa lưu"),
+        "models_no_providers": _ui_text(lang, "还没有提供商。", "No providers yet.", "Chưa có nhà cung cấp nào."),
+        "models_save_api_key": _ui_text(lang, "保存 API Key", "Save API Key", "Lưu API Key"),
+        "models_select_provider": _ui_text(lang, "选择提供商", "Select a provider", "Chọn nhà cung cấp"),
+        "models_enter_api_key": _ui_text(lang, "输入 API Key", "Enter API key", "Nhập API key"),
+        "models_api_key_note": _ui_text(lang, "Key 会加密保存到本地数据库。", "Keys are encrypted before being stored in the local database.", "Key sẽ được mã hóa trước khi lưu vào cơ sở dữ liệu."),
+        "models_provider_form": _ui_text(lang, "新增或更新提供商", "Add or update provider", "Thêm hoặc cập nhật nhà cung cấp"),
+        "models_slug_placeholder": _ui_text(lang, "唯一标识，例如 openrouter_custom", "Unique slug, e.g. openrouter_custom", "Mã định danh duy nhất, vd: openrouter_custom"),
+        "models_label_placeholder": _ui_text(lang, "显示名称", "Display label", "Tên hiển thị"),
+        "models_base_url_placeholder": _ui_text(lang, "基础 URL", "Base URL", "URL cơ sở"),
+        "models_model_placeholder": _ui_text(lang, "模型名", "Model name", "Tên mô hình"),
+        "models_save_provider": _ui_text(lang, "保存提供商", "Save Provider", "Lưu nhà cung cấp"),
+        "models_delete_provider": _ui_text(lang, "删除", "Delete", "Xóa"),
     }
 
 
@@ -1894,8 +2061,8 @@ def _build_env_overview() -> List[Dict[str, str]]:
 def _console_context(request: Request, db: Session, user: User, active_nav: str) -> Dict:
     ui_language = _ui_language(request)
 
-    def ui_text(zh: str, en: str) -> str:
-        return _ui_text(ui_language, zh, en)
+    def ui_text(zh: str, en: str, vi: str = "") -> str:
+        return _ui_text(ui_language, zh, en, vi)
 
     provider_specs = _provider_specs_for_user(db, user.id)
     provider_list = list(provider_specs.keys())
@@ -3740,7 +3907,7 @@ def console_status(request: Request, db: Session = Depends(get_db)):
 @app.post("/ui-language")
 def set_ui_language(request: Request, lang: str = Form(...), next: str = Form("/console/chat")):
     normalized = (lang or "").strip().lower()
-    request.session["ui_language"] = normalized if normalized in {"zh", "en"} else "en"
+    request.session["ui_language"] = normalized if normalized in {"en", "vi"} else "en"
     return _redirect(_safe_next_path(next, "/console/chat"))
 
 

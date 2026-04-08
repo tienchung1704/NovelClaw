@@ -38,7 +38,6 @@
               <div class="console-brand-subtitle">{{ ui_texts.brand_subtitle }}</div>
             </div>
           </a>
-          <button type="button" class="sidebar-toggle" data-sidebar-toggle aria-label="Toggle sidebar" aria-pressed="false">≡</button>
         </div>
 
         <div class="console-nav-group">
@@ -118,14 +117,14 @@
         <div class="console-runtime-meta">{{ ui_texts.runtime_mode }}={{ status_summary.agent_mode if status_summary else 'claw' }} | {{ ui_texts.runtime_max_steps }}={{ status_summary.claw_max_steps if status_summary else '-' }}</div>
         <div class="console-lang-switch">
           <form method="post" action="{{ app_path('/ui-language') }}">
-            <input type="hidden" name="lang" value="zh">
-            <input type="hidden" name="next" value="{{ current_path if current_path else current_public_path(request) }}">
-            <button class="lang-btn {% if ui_language == 'zh' %}is-active{% endif %}" type="submit">{{ ui_texts.lang_zh }}</button>
-          </form>
-          <form method="post" action="{{ app_path('/ui-language') }}">
             <input type="hidden" name="lang" value="en">
             <input type="hidden" name="next" value="{{ current_path if current_path else current_public_path(request) }}">
             <button class="lang-btn {% if ui_language == 'en' %}is-active{% endif %}" type="submit">{{ ui_texts.lang_en }}</button>
+          </form>
+          <form method="post" action="{{ app_path('/ui-language') }}">
+            <input type="hidden" name="lang" value="vi">
+            <input type="hidden" name="next" value="{{ current_path if current_path else current_public_path(request) }}">
+            <button class="lang-btn {% if ui_language == 'vi' %}is-active{% endif %}" type="submit">{{ ui_texts.lang_vi }}</button>
           </form>
         </div>
       </div>
@@ -143,21 +142,6 @@
   {% if user %}
   <script>
     (function () {
-      const key = "writeclaw.sidebar.collapsed";
-      const body = document.body;
-      const button = document.querySelector("[data-sidebar-toggle]");
-      if (!button || !body.classList.contains("console-body")) return;
-      function apply(collapsed) {
-        body.classList.toggle("sidebar-collapsed", collapsed);
-        button.setAttribute("aria-pressed", collapsed ? "true" : "false");
-      }
-      apply(window.localStorage.getItem(key) === "1");
-      button.addEventListener("click", function () {
-        const next = !body.classList.contains("sidebar-collapsed");
-        apply(next);
-        window.localStorage.setItem(key, next ? "1" : "0");
-      });
-    })();
   </script>
   <script>
     (function () {

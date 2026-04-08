@@ -1,0 +1,511 @@
+{
+  "schema_version": 2,
+  "texts": [],
+  "outlines": [],
+  "characters": [],
+  "world_settings": [],
+  "plot_points": [],
+  "fact_cards": [],
+  "claw": {
+    "session_profile": [
+      {
+        "id": "claw_session_profile_20260408_161554_0",
+        "bank": "session_profile",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "session_id=1\nprovider=deepseek\nstatus=active\nround=1",
+        "timestamp": "2026-04-08T16:15:54.154733",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_session_profile_20260408_161933_1",
+        "bank": "session_profile",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "session_id=2\nprovider=deepseek\nstatus=active\nround=1",
+        "timestamp": "2026-04-08T16:19:33.907948",
+        "metadata": {
+          "session_id": 2
+        }
+      },
+      {
+        "id": "claw_session_profile_20260408_162021_2",
+        "bank": "session_profile",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "session_id=1\nprovider=groq\nstatus=active\nround=1",
+        "timestamp": "2026-04-08T16:20:21.046476",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_session_profile_20260408_162259_3",
+        "bank": "session_profile",
+        "topic": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "content": "session_id=1\nprovider=groq\nstatus=active\nround=1",
+        "timestamp": "2026-04-08T16:22:59.090458",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_session_profile_20260408_162351_4",
+        "bank": "session_profile",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "session_id=1\nprovider=groq\nstatus=active\nround=1",
+        "timestamp": "2026-04-08T16:23:51.548477",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_session_profile_20260408_162432_5",
+        "bank": "session_profile",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "session_id=1\nprovider=groq\nstatus=active\nround=1",
+        "timestamp": "2026-04-08T16:24:32.074484",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_session_profile_20260408_162433_6",
+        "bank": "session_profile",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "session_id=1\nprovider=groq\nstatus=active\nround=2",
+        "timestamp": "2026-04-08T16:24:33.254840",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_session_profile_20260408_162433_7",
+        "bank": "session_profile",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "session_id=1\nprovider=groq\nstatus=confirmed\nround=2",
+        "timestamp": "2026-04-08T16:24:33.411002",
+        "metadata": {
+          "session_id": 1
+        }
+      }
+    ],
+    "language_profile": [
+      {
+        "id": "claw_language_profile_20260408_161554_0",
+        "bank": "language_profile",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "preferred_language=en\nsource_language=en\ntranslation_mode=follow_input",
+        "timestamp": "2026-04-08T16:15:54.155733",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_language_profile_20260408_161933_1",
+        "bank": "language_profile",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "preferred_language=en\nsource_language=en\ntranslation_mode=follow_input",
+        "timestamp": "2026-04-08T16:19:33.907948",
+        "metadata": {
+          "session_id": 2
+        }
+      },
+      {
+        "id": "claw_language_profile_20260408_162021_2",
+        "bank": "language_profile",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "preferred_language=en\nsource_language=en\ntranslation_mode=follow_input",
+        "timestamp": "2026-04-08T16:20:21.049477",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_language_profile_20260408_162259_3",
+        "bank": "language_profile",
+        "topic": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "content": "preferred_language=en\nsource_language=en\ntranslation_mode=follow_input",
+        "timestamp": "2026-04-08T16:22:59.094476",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_language_profile_20260408_162351_4",
+        "bank": "language_profile",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "preferred_language=en\nsource_language=en\ntranslation_mode=follow_input",
+        "timestamp": "2026-04-08T16:23:51.549502",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_language_profile_20260408_162432_5",
+        "bank": "language_profile",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "preferred_language=en\nsource_language=en\ntranslation_mode=follow_input",
+        "timestamp": "2026-04-08T16:24:32.077451",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_language_profile_20260408_162433_6",
+        "bank": "language_profile",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "preferred_language=en\nsource_language=en\ntranslation_mode=follow_input",
+        "timestamp": "2026-04-08T16:24:33.256840",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_language_profile_20260408_162433_7",
+        "bank": "language_profile",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "preferred_language=en\nsource_language=en\ntranslation_mode=follow_input",
+        "timestamp": "2026-04-08T16:24:33.417587",
+        "metadata": {
+          "session_id": 1
+        }
+      }
+    ],
+    "user_preferences": [
+      {
+        "id": "claw_user_preferences_20260408_162432_0",
+        "bank": "user_preferences",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "1. Động lực: Con chó tên Max muốn tìm kho báu để cứu chủ nhân khỏi nợ nần.\r\n\r\n2. Trở ngại: Max phải vượt qua một con sông nguy hiểm, tránh những con mèo hoang dữ, và giải một câu đố cổ.\r\n\r\n3. Kho báu: Một hộp vàng cổ. Nó giúp chủ nhân trả hết nợ và họ có thể giữ lại ngôi nhà.",
+        "timestamp": "2026-04-08T16:24:32.083478",
+        "metadata": {
+          "session_id": 1
+        }
+      }
+    ],
+    "task_briefs": [
+      {
+        "id": "claw_task_briefs_20260408_161554_0",
+        "bank": "task_briefs",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "Write a 3 paragraph story about a dog finding treasure",
+        "timestamp": "2026-04-08T16:15:54.155733",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_task_briefs_20260408_161933_1",
+        "bank": "task_briefs",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "Write a 3 paragraph story about a dog finding treasure",
+        "timestamp": "2026-04-08T16:19:33.908919",
+        "metadata": {
+          "session_id": 2
+        }
+      },
+      {
+        "id": "claw_task_briefs_20260408_162021_2",
+        "bank": "task_briefs",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "Write a 3 paragraph story about a dog finding treasure",
+        "timestamp": "2026-04-08T16:20:21.051472",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_task_briefs_20260408_162259_3",
+        "bank": "task_briefs",
+        "topic": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "content": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "timestamp": "2026-04-08T16:22:59.095495",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_task_briefs_20260408_162351_4",
+        "bank": "task_briefs",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "timestamp": "2026-04-08T16:23:51.550476",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_task_briefs_20260408_162432_5",
+        "bank": "task_briefs",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "timestamp": "2026-04-08T16:24:32.079479",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_task_briefs_20260408_162433_6",
+        "bank": "task_briefs",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "timestamp": "2026-04-08T16:24:33.257840",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_task_briefs_20260408_162433_7",
+        "bank": "task_briefs",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "timestamp": "2026-04-08T16:24:33.421259",
+        "metadata": {
+          "session_id": 1
+        }
+      }
+    ],
+    "story_premise": [
+      {
+        "id": "claw_story_premise_20260408_161554_0",
+        "bank": "story_premise",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "Write a 3 paragraph story about a dog finding treasure",
+        "timestamp": "2026-04-08T16:15:54.156734",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_story_premise_20260408_161933_1",
+        "bank": "story_premise",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "Write a 3 paragraph story about a dog finding treasure",
+        "timestamp": "2026-04-08T16:19:33.909945",
+        "metadata": {
+          "session_id": 2
+        }
+      },
+      {
+        "id": "claw_story_premise_20260408_162021_2",
+        "bank": "story_premise",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "Write a 3 paragraph story about a dog finding treasure",
+        "timestamp": "2026-04-08T16:20:21.053475",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_story_premise_20260408_162259_3",
+        "bank": "story_premise",
+        "topic": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "content": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "timestamp": "2026-04-08T16:22:59.096493",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_story_premise_20260408_162351_4",
+        "bank": "story_premise",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "timestamp": "2026-04-08T16:23:51.551504",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_story_premise_20260408_162432_5",
+        "bank": "story_premise",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "timestamp": "2026-04-08T16:24:32.081479",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_story_premise_20260408_162433_6",
+        "bank": "story_premise",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "timestamp": "2026-04-08T16:24:33.258841",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_story_premise_20260408_162433_7",
+        "bank": "story_premise",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "timestamp": "2026-04-08T16:24:33.424258",
+        "metadata": {
+          "session_id": 1
+        }
+      }
+    ],
+    "style_guide": [
+      {
+        "id": "claw_style_guide_20260408_162259_0",
+        "bank": "style_guide",
+        "topic": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "content": "adventurous tone\nheartwarming moments",
+        "timestamp": "2026-04-08T16:22:59.097492",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_style_guide_20260408_162351_1",
+        "bank": "style_guide",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "exciting adventure tone",
+        "timestamp": "2026-04-08T16:23:51.553477",
+        "metadata": {
+          "session_id": 1
+        }
+      }
+    ],
+    "chapter_briefs": [],
+    "scene_cards": [],
+    "entity_state": [],
+    "relationship_state": [],
+    "world_state": [],
+    "continuity_facts": [],
+    "tool_observations": [],
+    "decision_log": [
+      {
+        "id": "claw_decision_log_20260408_161554_0",
+        "bank": "decision_log",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "next_questions=\nWhat is the core conflict and what kind of writing help do you want first?",
+        "timestamp": "2026-04-08T16:15:54.157733",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_decision_log_20260408_161933_1",
+        "bank": "decision_log",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "next_questions=\nWhat is the core conflict and what kind of writing help do you want first?",
+        "timestamp": "2026-04-08T16:19:33.910921",
+        "metadata": {
+          "session_id": 2
+        }
+      },
+      {
+        "id": "claw_decision_log_20260408_162021_2",
+        "bank": "decision_log",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "next_questions=\nWhat is the core conflict and what kind of writing help do you want first?",
+        "timestamp": "2026-04-08T16:20:21.057282",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_decision_log_20260408_162259_3",
+        "bank": "decision_log",
+        "topic": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "content": "next_questions=\nWhat is the dog's background and what motivates it to go on this treasure hunt?\nWhat kind of treasure does the dog find and how does it impact the dog's life?\nIn what kind of environment or world does this story take place?",
+        "timestamp": "2026-04-08T16:22:59.098468",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_decision_log_20260408_162351_4",
+        "bank": "decision_log",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "next_questions=\nWhat is the dog's motivation for finding the treasure?\nWhat kind of obstacles and challenges will the dog face on its journey?\nWhat is the treasure, and how will it change the dog's life?",
+        "timestamp": "2026-04-08T16:23:51.554477",
+        "metadata": {
+          "session_id": 1
+        }
+      },
+      {
+        "id": "claw_decision_log_20260408_162433_5",
+        "bank": "decision_log",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "session_confirmed_for_generation",
+        "timestamp": "2026-04-08T16:24:33.427259",
+        "metadata": {
+          "session_id": 1
+        }
+      }
+    ],
+    "revision_notes": [],
+    "working_set": [
+      {
+        "id": "claw_working_set_20260408_161554_0",
+        "bank": "working_set",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "The first ideation turn failed: LLM call failed: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}",
+        "timestamp": "2026-04-08T16:15:54.156734",
+        "metadata": {
+          "session_id": 1,
+          "kind": "analysis"
+        }
+      },
+      {
+        "id": "claw_working_set_20260408_161933_1",
+        "bank": "working_set",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "The first ideation turn failed: LLM call failed: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}",
+        "timestamp": "2026-04-08T16:19:33.909945",
+        "metadata": {
+          "session_id": 2,
+          "kind": "analysis"
+        }
+      },
+      {
+        "id": "claw_working_set_20260408_162021_2",
+        "bank": "working_set",
+        "topic": "Write a 3 paragraph story about a dog finding treasure",
+        "content": "The first ideation turn failed: LLM call failed: Error code: 400 - {'error': {'message': 'The model `llama-3.1-70b-versatile` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",
+        "timestamp": "2026-04-08T16:20:21.054476",
+        "metadata": {
+          "session_id": 1,
+          "kind": "analysis"
+        }
+      },
+      {
+        "id": "claw_working_set_20260408_162259_3",
+        "bank": "working_set",
+        "topic": "A curious and adventurous dog, perhaps with a unique background or skill set, embarks on a journey that leads to the discovery of hidden treasure. This treasure could be anything from gold and jewels to something more symbolic or personally significant to the dog.",
+        "content": "The original idea is simple and straightforward, with a clear central plot point: a dog finding treasure. However, to develop this into a compelling story, we need to consider the context, the dog's character, and the nature of the treasure. The story's tone and the world in which it takes place also require consideration.",
+        "timestamp": "2026-04-08T16:22:59.097492",
+        "metadata": {
+          "session_id": 1,
+          "kind": "analysis"
+        }
+      },
+      {
+        "id": "claw_working_set_20260408_162351_4",
+        "bank": "working_set",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "The original idea is about a dog's journey to find treasure, which is a classic and engaging concept. However, to develop a stable writing brief, we need to consider the cast, world rules, conflict, and structure. The story will be divided into three chapters, which suggests a clear beginning, middle, and end.",
+        "timestamp": "2026-04-08T16:23:51.552476",
+        "metadata": {
+          "session_id": 1,
+          "kind": "analysis"
+        }
+      },
+      {
+        "id": "claw_working_set_20260408_162433_5",
+        "bank": "working_set",
+        "topic": "A curious and adventurous dog embarks on a perilous journey to find a legendary treasure, facing various obstacles and challenges along the way. The story will be told in three chapters, each with its own unique conflicts and resolutions.",
+        "content": "Execution mode is starting now. I will generate the next 3 chapters first.",
+        "timestamp": "2026-04-08T16:24:33.259841",
+        "metadata": {
+          "session_id": 1,
+          "kind": "analysis"
+        }
+      }
+    ]
+  }
+}
