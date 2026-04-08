@@ -115,15 +115,17 @@ def select_mode(request: Request, db: Session = Depends(get_db)):
     user = _ensure_preview_user(request, db)
     lang = _ui_language(request)
     current_mode = _selected_mode(request)
-    context = _portal_context(
-        request,
-        preview_session=user.email,
-        current_mode=current_mode,
-        current_mode_label=_selected_mode_label(current_mode, lang),
-        mode_a_url="/mode-a",
-        mode_b_url="/mode-b",
-    )
+    context = {
+        "request": request,
+        "ui_language": lang,
+        "preview_session": user.email,
+        "current_mode": current_mode,
+        "current_mode_label": _selected_mode_label(current_mode, lang),
+        "mode_a_url": "/mode-a",
+        "mode_b_url": "/mode-b",
+    }
     return templates.TemplateResponse(
+        request=request,
         name="select_mode.html",
         context=context,
     )
