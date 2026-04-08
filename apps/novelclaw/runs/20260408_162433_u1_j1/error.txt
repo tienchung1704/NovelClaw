@@ -1,0 +1,49 @@
+LLM call failed: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01knp6445jev0axbh1mp31bqex` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12142, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+
+Traceback (most recent call last):
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\utils\llm_client.py", line 85, in chat
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\.venv-shared\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\.venv-shared\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\.venv-shared\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\.venv-shared\Lib\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01knp6445jev0axbh1mp31bqex` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12142, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\local_web_portal\worker_process.py", line 105, in run_worker
+    result = executor.generate_long_text(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\workflow\executor.py", line 662, in generate_long_text
+    chapter_state = self._run_chapter_agentic_loop(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\workflow\executor.py", line 914, in _run_chapter_agentic_loop
+    return manager.run_chapter_loop(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\workflow\claw_manager.py", line 609, in run_chapter_loop
+    tool_result_text, updated_candidate = self._execute_tool(tool_name, tool_args, state)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\workflow\claw_manager.py", line 826, in _execute_tool
+    result = self._run_world_enrichment(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\workflow\claw_manager.py", line 1154, in _run_world_enrichment
+    return self.executor.agents["world"].generate(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\agents\world_agent.py", line 72, in generate
+    response = self.llm_client.chat(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aiwriter\NovelClaw\apps\novelclaw\utils\llm_client.py", line 100, in chat
+    raise Exception(self._text(f"LLM 调用失败: {str(e)}", f"LLM call failed: {str(e)}"))
+Exception: LLM call failed: Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01knp6445jev0axbh1mp31bqex` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12142, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+
+
+worker_stderr:

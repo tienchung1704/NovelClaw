@@ -33,3 +33,17 @@
 [Claw] done action=plot_strategy elapsed=13.90s
 [OpenClaw] step=2 → tool=plot_strategy args={}
 [LLM] start provider=groq model=llama-3.3-70b-versatile wire=chat timeout=disabled
+[LLM] done model=llama-3.3-70b-versatile elapsed=28.93s
+[Claw] tool-call provider=groq model=llama-3.3-70b-versatile tools=['inspect_workspace', 'plot_strategy', 'retrieve_context', 'enrich_character', 'enrich_world', 'draft_chapter', 'rewrite_chapter', 'sync_storyboard', 'sync_characters', 'sync_world', 'ask_user', 'finalize']
+[Claw] done action=retrieve_context elapsed=14.80s
+[OpenClaw] step=3 → tool=retrieve_context args={}
+[Claw] tool-call provider=groq model=llama-3.3-70b-versatile tools=['inspect_workspace', 'plot_strategy', 'retrieve_context', 'enrich_character', 'enrich_world', 'draft_chapter', 'rewrite_chapter', 'sync_storyboard', 'sync_characters', 'sync_world', 'ask_user', 'finalize']
+[Claw] done action=enrich_character elapsed=14.91s
+[OpenClaw] step=4 → tool=enrich_character args={}
+[LLM] start provider=groq model=llama-3.3-70b-versatile wire=chat timeout=disabled
+[LLM] done model=llama-3.3-70b-versatile elapsed=39.00s
+[Claw] tool-call provider=groq model=llama-3.3-70b-versatile tools=['inspect_workspace', 'plot_strategy', 'retrieve_context', 'enrich_character', 'enrich_world', 'draft_chapter', 'rewrite_chapter', 'sync_storyboard', 'sync_characters', 'sync_world', 'ask_user', 'finalize']
+[Claw] done action=enrich_world elapsed=15.78s
+[OpenClaw] step=5 → tool=enrich_world args={}
+[LLM] start provider=groq model=llama-3.3-70b-versatile wire=chat timeout=disabled
+[LLM] failed model=llama-3.3-70b-versatile elapsed=0.16s err=Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01knp6445jev0axbh1mp31bqex` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12142, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
