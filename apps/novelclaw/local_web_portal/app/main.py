@@ -710,16 +710,18 @@ def _current_public_path(request: Request) -> str:
 
 
 def _redirect(path: str) -> RedirectResponse:
-    parts = urlsplit(path)
-    target = urlunsplit(
-        (
-            parts.scheme,
-            parts.netloc,
-            _app_path(parts.path),
-            parts.query,
-            parts.fragment,
+    target = path
+    if not (target.startswith("http://") or target.startswith("https://")):
+        parts = urlsplit(path)
+        target = urlunsplit(
+            (
+                parts.scheme,
+                parts.netloc,
+                _app_path(parts.path),
+                parts.query,
+                parts.fragment,
+            )
         )
-    )
     return RedirectResponse(target, status_code=status.HTTP_303_SEE_OTHER)
 
 
@@ -727,7 +729,7 @@ def _safe_next_path(target: str, default: str = "/console/chat") -> str:
     normalized = (target or "").strip()
     if not normalized or not normalized.startswith("/") or normalized.startswith("//"):
         return _app_path(default)
-    return normalized
+    return _app_path(normalized)
 
 
 def _redirect_with_notice(path: str, *, message: str = "", error: str = "") -> RedirectResponse:

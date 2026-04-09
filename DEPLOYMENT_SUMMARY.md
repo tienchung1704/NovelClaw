@@ -317,6 +317,8 @@ pm2 start <id>
 2. ✅ Thêm `path="/"` vào `SessionMiddleware` của cả 3 apps
 3. ✅ Sửa `APP_CLAW_URL` và `APP_MULTIAGENT_URL` dùng relative path qua Nginx
 4. ✅ Thay tất cả `_redirect("/login")` thành `_redirect("/select-mode")` trong novelclaw và multiagent
+5. ✅ Fix lỗi mã hóa tên URL `%3A` trong hàm `_redirect`
+6. ✅ Đảm bảo `_safe_next_path` luôn áp dụng `APP_BASE_PATH` (Fix lỗi 404 khi đổi ngôn ngữ)
 
 **⚠️ QUAN TRỌNG - Cần làm trên Server 192.168.1.15**:
 ```bash
@@ -328,11 +330,20 @@ cat ~/NovelClaw/apps/auth-portal/local_web_portal/.env | grep APP_SESSION_SECRET
 # ~/NovelClaw/apps/novelclaw/local_web_portal/.env
 # ~/NovelClaw/apps/multiagent/local_web_portal/.env
 
-# 2. Sửa auth-portal .env redirect URLs:
+# 2. Cấu hình Prefix Path (Rất quan trọng để không bị lỗi 404)
+# File novelclaw/.env:
+sed -i 's|APP_BASE_PATH=.*|APP_BASE_PATH=/claw|' ~/NovelClaw/apps/novelclaw/local_web_portal/.env
+sed -i 's|APP_SHARED_PORTAL_URL=.*|APP_SHARED_PORTAL_URL=/|' ~/NovelClaw/apps/novelclaw/local_web_portal/.env
+
+# File multiagent/.env:
+sed -i 's|APP_BASE_PATH=.*|APP_BASE_PATH=/multiagent|' ~/NovelClaw/apps/multiagent/local_web_portal/.env
+sed -i 's|APP_SHARED_PORTAL_URL=.*|APP_SHARED_PORTAL_URL=/|' ~/NovelClaw/apps/multiagent/local_web_portal/.env
+
+# 3. Sửa auth-portal .env redirect URLs:
 sed -i 's|APP_MULTIAGENT_URL=.*|APP_MULTIAGENT_URL=/multiagent/dashboard|' ~/NovelClaw/apps/auth-portal/local_web_portal/.env
 sed -i 's|APP_CLAW_URL=.*|APP_CLAW_URL=/claw/dashboard|' ~/NovelClaw/apps/auth-portal/local_web_portal/.env
 
-# 3. Pull code mới và restart:
+# 4. Pull code mới và restart:
 cd ~/NovelClaw
 git pull
 pm2 restart all

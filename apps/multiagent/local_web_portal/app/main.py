@@ -187,22 +187,24 @@ def _current_public_path(request: Request) -> str:
 
 
 def _redirect(path: str, **query: str) -> RedirectResponse:
-    parts = urlsplit(path)
-    params = dict(parse_qsl(parts.query, keep_blank_values=True))
-    for key, value in query.items():
-        if value is None:
-            continue
-        params[key] = str(value)
-    target_path = _app_path(parts.path)
-    target = urlunsplit(
-        (
-            parts.scheme,
-            parts.netloc,
-            target_path,
-            urlencode(params, doseq=True),
-            parts.fragment,
+    target = path
+    if not (target.startswith("http://") or target.startswith("https://")):
+        parts = urlsplit(path)
+        params = dict(parse_qsl(parts.query, keep_blank_values=True))
+        for key, value in query.items():
+            if value is None:
+                continue
+            params[key] = str(value)
+        target_path = _app_path(parts.path)
+        target = urlunsplit(
+            (
+                parts.scheme,
+                parts.netloc,
+                target_path,
+                urlencode(params, doseq=True),
+                parts.fragment,
+            )
         )
-    )
     return RedirectResponse(target, status_code=status.HTTP_303_SEE_OTHER)
 
 
@@ -210,7 +212,7 @@ def _safe_next_path(value: str | None) -> str:
     raw = (value or "").strip()
     if not raw or not raw.startswith("/") or raw.startswith("//"):
         return _app_path("/")
-    return raw
+    return _app_path(raw)
 
 
 def _redirect_back_or(default_path: str, next_path: str | None = None, **query: str) -> RedirectResponse:
