@@ -688,6 +688,8 @@ def _shared_path(path: str) -> str:
 
 def _app_path(path: str) -> str:
     normalized = _shared_path(path)
+    if normalized.startswith("http://") or normalized.startswith("https://"):
+        return normalized
     if _is_shared_portal_path(normalized) and settings.shared_portal_url:
         return f"{settings.shared_portal_url}{normalized}"
     if not settings.base_path:
