@@ -13,7 +13,7 @@ module.exports = {
     {
       name: 'novelclaw-multiagent',
       script: '/home/netviet/NovelClaw/.venv-shared/bin/uvicorn',
-      args: 'app.main:app --host 0.0.0.0 --port 8011 --root-path /multiagent',
+      args: 'app.main:app --host 0.0.0.0 --port 8011',
       cwd: '/home/netviet/NovelClaw/apps/multiagent/local_web_portal',
       interpreter: 'none',
       env: {
@@ -23,7 +23,7 @@ module.exports = {
     {
       name: 'novelclaw-main',
       script: '/home/netviet/NovelClaw/.venv-shared/bin/uvicorn',
-      args: 'app.main:app --host 0.0.0.0 --port 8012 --root-path /claw',
+      args: 'app.main:app --host 0.0.0.0 --port 8036',
       cwd: '/home/netviet/NovelClaw/apps/novelclaw/local_web_portal',
       interpreter: 'none',
       env: {

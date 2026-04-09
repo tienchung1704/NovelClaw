@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
 import os
@@ -559,6 +559,7 @@ app.add_middleware(
     secret_key=SESSION_SECRET,
     session_cookie=settings.session_cookie_name,
     same_site="lax",
+    path="/",
     https_only=settings.https_only,
     domain=settings.session_cookie_domain or None,
 )
@@ -3470,14 +3471,14 @@ def login(
 @app.post("/logout")
 def logout(request: Request):
     request.session.clear()
-    return _redirect("/login")
+    return _redirect("/select-mode")
 
 
 @app.get("/dashboard")
 def dashboard(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("dashboard.html", _console_context(request, db, user, active_nav="chat"))
 
 
@@ -3485,7 +3486,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
 def console_chat(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("dashboard.html", _console_context(request, db, user, active_nav="chat"))
 
 
@@ -3493,7 +3494,7 @@ def console_chat(request: Request, db: Session = Depends(get_db)):
 def console_sessions(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_sessions.html", _console_context(request, db, user, active_nav="sessions"))
 
 
@@ -3501,7 +3502,7 @@ def console_sessions(request: Request, db: Session = Depends(get_db)):
 def console_tasks(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return _redirect_with_notice(
         "/console/chat",
         message=_ui_text(_ui_language(request), "Claw \u8fd0\u884c\u73b0\u5728\u76f4\u63a5\u663e\u793a\u5728\u804a\u5929\u5de5\u4f5c\u53f0\u5185\u3002", "Claw runs are now shown directly inside the chat workspace."),
@@ -3511,7 +3512,7 @@ def console_tasks(request: Request, db: Session = Depends(get_db)):
 def console_workspace(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return _redirect(f"/console/manuscript{_session_suffix(request, db, user)}")
 
 
@@ -3533,7 +3534,7 @@ def _session_suffix(request: Request, db: Session, user: User) -> str:
 def console_manuscript(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return _redirect(f"/console/manuscript/read{_session_suffix(request, db, user)}")
 
 
@@ -3541,7 +3542,7 @@ def console_manuscript(request: Request, db: Session = Depends(get_db)):
 def console_memory(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return _redirect(f"/console/memory/banks{_session_suffix(request, db, user)}")
 
 
@@ -3549,7 +3550,7 @@ def console_memory(request: Request, db: Session = Depends(get_db)):
 def console_manuscript_read(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse(
         "console_manuscript_read.html",
         _console_page_context(request, db, user, active_nav="manuscript_read", workspace_section="read"),
@@ -3560,7 +3561,7 @@ def console_manuscript_read(request: Request, db: Session = Depends(get_db)):
 def console_manuscript_outline(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse(
         "console_manuscript_outline.html",
         _console_page_context(request, db, user, active_nav="manuscript_outline", workspace_section="outline"),
@@ -3571,7 +3572,7 @@ def console_manuscript_outline(request: Request, db: Session = Depends(get_db)):
 def console_manuscript_planning(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse(
         "console_manuscript_planning.html",
         _console_page_context(request, db, user, active_nav="manuscript_planning", workspace_section="planning"),
@@ -3582,7 +3583,7 @@ def console_manuscript_planning(request: Request, db: Session = Depends(get_db))
 def console_memory_banks(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return _redirect(f"/console/memory/zone/premise{_session_suffix(request, db, user)}")
 
 
@@ -3590,7 +3591,7 @@ def console_memory_banks(request: Request, db: Session = Depends(get_db)):
 def console_memory_entries(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return _redirect(f"/console/memory/zone/premise{_session_suffix(request, db, user)}")
 
 
@@ -3598,7 +3599,7 @@ def console_memory_entries(request: Request, db: Session = Depends(get_db)):
 def console_memory_revision_redirect(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return _redirect(f"/console/memory/zone/revision_loop{_session_suffix(request, db, user)}")
 
 
@@ -3616,7 +3617,7 @@ _MEMORY_ZONE_META = {
 def console_memory_zone(slug: str, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     if slug not in _MEMORY_ZONE_META:
         slug = "premise"
     zh, en, desc = _MEMORY_ZONE_META[slug]
@@ -3640,7 +3641,7 @@ def _console_memory_revision_legacy(request: Request, db: Session = Depends(get_
 def console_storyboard(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_storyboard.html", _console_context(request, db, user, active_nav="storyboard"))
 
 
@@ -3648,7 +3649,7 @@ def console_storyboard(request: Request, db: Session = Depends(get_db)):
 def console_characters(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_characters.html", _console_context(request, db, user, active_nav="characters"))
 
 
@@ -3656,7 +3657,7 @@ def console_characters(request: Request, db: Session = Depends(get_db)):
 def console_world(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_world.html", _console_context(request, db, user, active_nav="world"))
 
 
@@ -3664,7 +3665,7 @@ def console_world(request: Request, db: Session = Depends(get_db)):
 def console_style(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_style.html", _console_context(request, db, user, active_nav="style"))
 
 
@@ -3672,7 +3673,7 @@ def console_style(request: Request, db: Session = Depends(get_db)):
 def console_skills(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_skills.html", _console_context(request, db, user, active_nav="skills"))
 
 
@@ -3680,7 +3681,7 @@ def console_skills(request: Request, db: Session = Depends(get_db)):
 def toggle_capability(slug: str, request: Request, enabled: str = Form("0"), db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     normalized_slug = str(slug or "").strip().lower()
     spec = capability_map().get(normalized_slug)
@@ -3714,7 +3715,7 @@ def toggle_capability(slug: str, request: Request, enabled: str = Form("0"), db:
 def console_mcp(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_mcp.html", _console_context(request, db, user, active_nav="mcp"))
 
 
@@ -3722,7 +3723,7 @@ def console_mcp(request: Request, db: Session = Depends(get_db)):
 def console_agents(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_agents.html", _console_context(request, db, user, active_nav="agents"))
 
 
@@ -3730,7 +3731,7 @@ def console_agents(request: Request, db: Session = Depends(get_db)):
 def console_models(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_models.html", _console_context(request, db, user, active_nav="models"))
 
 
@@ -3738,7 +3739,7 @@ def console_models(request: Request, db: Session = Depends(get_db)):
 def console_env(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     ctx = _console_context(request, db, user, active_nav="env")
     ctx["env_form_values"] = {
         "web_execution_mode": os.getenv("WEB_EXECUTION_MODE", settings.execution_mode),
@@ -3802,7 +3803,7 @@ async def save_env_settings(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     language = _ui_language(request)
 
@@ -3900,7 +3901,7 @@ async def save_env_settings(
 def console_status(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("console_status.html", _console_context(request, db, user, active_nav="status"))
 
 
@@ -3920,7 +3921,7 @@ def save_api_key(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     if _modelless_mode_enabled():
         return _reject_when_modelless(request, path="/console/models")
 
@@ -3971,7 +3972,7 @@ def save_provider_config(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     if _modelless_mode_enabled():
         return _reject_when_modelless(request, path="/console/models")
 
@@ -4036,7 +4037,7 @@ def save_provider_config(
 def delete_provider_config(slug: str, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     if _modelless_mode_enabled():
         return _reject_when_modelless(request, path="/console/models")
 
@@ -4075,7 +4076,7 @@ def start_idea_copilot(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     if _modelless_mode_enabled():
         return _reject_when_modelless(request, path="/console/chat")
 
@@ -4167,7 +4168,7 @@ def start_idea_copilot(
 def idea_copilot_detail(session_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     session = db.get(IdeaCopilotSession, session_id)
     if not session or session.user_id != user.id:
@@ -4184,7 +4185,7 @@ def idea_copilot_reply(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     if _modelless_mode_enabled():
         return _reject_when_modelless(request, path=f"/console/chat?session_id={session_id}")
 
@@ -4290,7 +4291,7 @@ async def idea_copilot_brief_edit(
 def idea_copilot_confirm(session_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     if _modelless_mode_enabled():
         return _reject_when_modelless(request, path=f"/console/chat?session_id={session_id}")
 
@@ -4316,7 +4317,7 @@ def idea_copilot_confirm(session_id: int, request: Request, db: Session = Depend
 def idea_copilot_cancel(session_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     session = db.get(IdeaCopilotSession, session_id)
     if not session or session.user_id != user.id:
@@ -4350,7 +4351,7 @@ def idea_copilot_delete(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     session = db.get(IdeaCopilotSession, session_id)
     if not session or session.user_id != user.id:
@@ -4379,7 +4380,7 @@ def create_job(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     if _modelless_mode_enabled():
         return _reject_when_modelless(request, path="/console/chat")
 
@@ -4409,7 +4410,7 @@ def create_job(
 def cancel_job(job_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     job = db.get(GenerationJob, job_id)
     if not job or job.user_id != user.id:
@@ -4432,7 +4433,7 @@ def cancel_job(job_id: int, request: Request, db: Session = Depends(get_db)):
 def delete_job(job_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     job = db.get(GenerationJob, job_id)
     if not job or job.user_id != user.id:
@@ -4467,7 +4468,7 @@ def delete_job(job_id: int, request: Request, db: Session = Depends(get_db)):
 def job_detail(job_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     job = db.get(GenerationJob, job_id)
     if not job or job.user_id != user.id:

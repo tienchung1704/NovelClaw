@@ -73,6 +73,7 @@ app.add_middleware(
     secret_key=SESSION_SECRET,
     session_cookie=settings.session_cookie_name,
     same_site="lax",
+    path="/",
     https_only=settings.https_only,
     domain=settings.session_cookie_domain or None,
 )
@@ -1155,7 +1156,7 @@ def change_language(request: Request, locale: str = Form(...), next: str = Form(
 def dashboard(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("dashboard.html", _workspace_payload(request, db, user, job_limit=8, session_limit=8))
 
 
@@ -1163,7 +1164,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
 def jobs_page(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("jobs.html", _workspace_payload(request, db, user, job_limit=60, session_limit=8))
 
 
@@ -1171,7 +1172,7 @@ def jobs_page(request: Request, db: Session = Depends(get_db)):
 def providers_page(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("providers.html", _workspace_payload(request, db, user, job_limit=8, session_limit=8))
 
 
@@ -1179,7 +1180,7 @@ def providers_page(request: Request, db: Session = Depends(get_db)):
 def sessions_page(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     return templates.TemplateResponse("sessions.html", _workspace_payload(request, db, user, job_limit=12, session_limit=60))
 
 
@@ -1193,7 +1194,7 @@ def save_api_key(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     provider = provider.strip().lower()
     api_key = api_key.strip()
@@ -1241,7 +1242,7 @@ def save_provider_config(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     norm_slug = normalize_slug(slug)
     norm_label = (label or "").strip()
@@ -1294,7 +1295,7 @@ def save_provider_config(
 def delete_provider_config(slug: str, request: Request, next: str = Form("/providers"), db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     norm_slug = normalize_slug(slug)
     row = db.execute(
@@ -1331,7 +1332,7 @@ def start_idea_copilot(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     idea = idea.strip()
     provider = provider.strip().lower()
@@ -1393,7 +1394,7 @@ def start_idea_copilot(
 def idea_copilot_detail(session_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     session = db.get(IdeaCopilotSession, session_id)
     if not session or session.user_id != user.id:
@@ -1429,7 +1430,7 @@ def idea_copilot_reply(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     session = db.get(IdeaCopilotSession, session_id)
     if not session or session.user_id != user.id:
@@ -1475,7 +1476,7 @@ def idea_copilot_reply(
 def idea_copilot_confirm(session_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     session = db.get(IdeaCopilotSession, session_id)
     if not session or session.user_id != user.id:
@@ -1506,7 +1507,7 @@ def idea_copilot_confirm(session_id: int, request: Request, db: Session = Depend
 def idea_copilot_cancel(session_id: int, request: Request, next: str = Form("/sessions"), db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     session = db.get(IdeaCopilotSession, session_id)
     if not session or session.user_id != user.id:
@@ -1529,7 +1530,7 @@ def create_job(
 ):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     idea = idea.strip()
     provider = provider.strip().lower()
@@ -1554,7 +1555,7 @@ def create_job(
 def cancel_job(job_id: int, request: Request, next: str = Form(""), db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     job = db.get(GenerationJob, job_id)
     if not job or job.user_id != user.id:
@@ -1585,7 +1586,7 @@ def cancel_job(job_id: int, request: Request, next: str = Form(""), db: Session 
 def delete_job(job_id: int, request: Request, next: str = Form("/jobs"), db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
 
     job = db.get(GenerationJob, job_id)
     if not job or job.user_id != user.id:
@@ -1614,7 +1615,7 @@ def delete_job(job_id: int, request: Request, next: str = Form("/jobs"), db: Ses
 def job_detail(job_id: int, request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
-        return _redirect("/login")
+        return _redirect("/select-mode")
     locale = get_locale(request)
 
     job = db.get(GenerationJob, job_id)

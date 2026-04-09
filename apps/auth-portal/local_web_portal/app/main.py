@@ -26,6 +26,7 @@ app.add_middleware(
     session_cookie=settings.session_cookie_name,
     https_only=settings.https_only,
     same_site="lax",
+    path="/",
     domain=settings.session_cookie_domain or None,
 )
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "app" / "static")), name="static")
