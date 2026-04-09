@@ -1157,7 +1157,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("dashboard.html", _workspace_payload(request, db, user, job_limit=8, session_limit=8))
+    return templates.TemplateResponse(request=request, name="dashboard.html", context=_workspace_payload(request, db, user, job_limit=8, session_limit=8))
 
 
 @app.get("/jobs")
@@ -1165,7 +1165,7 @@ def jobs_page(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("jobs.html", _workspace_payload(request, db, user, job_limit=60, session_limit=8))
+    return templates.TemplateResponse(request=request, name="jobs.html", context=_workspace_payload(request, db, user, job_limit=60, session_limit=8))
 
 
 @app.get("/providers")
@@ -1173,7 +1173,7 @@ def providers_page(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("providers.html", _workspace_payload(request, db, user, job_limit=8, session_limit=8))
+    return templates.TemplateResponse(request=request, name="providers.html", context=_workspace_payload(request, db, user, job_limit=8, session_limit=8))
 
 
 @app.get("/sessions")
@@ -1181,7 +1181,7 @@ def sessions_page(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("sessions.html", _workspace_payload(request, db, user, job_limit=12, session_limit=60))
+    return templates.TemplateResponse(request=request, name="sessions.html", context=_workspace_payload(request, db, user, job_limit=12, session_limit=60))
 
 
 @app.post("/api-keys")
@@ -1406,8 +1406,9 @@ def idea_copilot_detail(session_id: int, request: Request, db: Session = Depends
     provider_specs = _provider_specs_for_user(db, user.id)
 
     return templates.TemplateResponse(
-        "idea_copilot.html",
-        {
+        request=request,
+        name="idea_copilot.html",
+        context={
             "request": request,
             "user": user,
             "session_data": session,
@@ -1496,6 +1497,7 @@ def idea_copilot_confirm(session_id: int, request: Request, db: Session = Depend
     session.final_job_id = job.id
     session.refined_idea = str(state.get("refined_idea") or session.refined_idea or session.original_idea)
     session.round_count = int(state.get("round", 0) or 0)
+    session.readiness_score = int(state.get("readiness", 0) or 0)
     session.finished_at = datetime.now(timezone.utc)
     db.commit()
 
@@ -1645,8 +1647,9 @@ def job_detail(job_id: int, request: Request, db: Session = Depends(get_db)):
     memory_preview = _build_memory_preview(memory_index, memory_index_path)
 
     return templates.TemplateResponse(
-        "job_detail.html",
-        {
+        request=request,
+        name="job_detail.html",
+        context={
             "request": request,
             "user": user,
             "job": job,

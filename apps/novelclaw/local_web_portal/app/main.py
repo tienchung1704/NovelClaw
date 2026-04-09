@@ -3479,7 +3479,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("dashboard.html", _console_context(request, db, user, active_nav="chat"))
+    return templates.TemplateResponse(request=request, name="dashboard.html", context=_console_context(request, db, user, active_nav="chat"))
 
 
 @app.get("/console/chat")
@@ -3487,7 +3487,7 @@ def console_chat(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("dashboard.html", _console_context(request, db, user, active_nav="chat"))
+    return templates.TemplateResponse(request=request, name="dashboard.html", context=_console_context(request, db, user, active_nav="chat"))
 
 
 @app.get("/console/sessions")
@@ -3495,7 +3495,7 @@ def console_sessions(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_sessions.html", _console_context(request, db, user, active_nav="sessions"))
+    return templates.TemplateResponse(request=request, name="console_sessions.html", context=_console_context(request, db, user, active_nav="sessions"))
 
 
 @app.get("/console/tasks")
@@ -3552,8 +3552,9 @@ def console_manuscript_read(request: Request, db: Session = Depends(get_db)):
     if not user:
         return _redirect("/select-mode")
     return templates.TemplateResponse(
-        "console_manuscript_read.html",
-        _console_page_context(request, db, user, active_nav="manuscript_read", workspace_section="read"),
+        request=request,
+        name="console_manuscript_read.html",
+        context=_console_page_context(request, db, user, active_nav="manuscript_read", workspace_section="read"),
     )
 
 
@@ -3563,8 +3564,9 @@ def console_manuscript_outline(request: Request, db: Session = Depends(get_db)):
     if not user:
         return _redirect("/select-mode")
     return templates.TemplateResponse(
-        "console_manuscript_outline.html",
-        _console_page_context(request, db, user, active_nav="manuscript_outline", workspace_section="outline"),
+        request=request,
+        name="console_manuscript_outline.html",
+        context=_console_page_context(request, db, user, active_nav="manuscript_outline", workspace_section="outline"),
     )
 
 
@@ -3574,8 +3576,9 @@ def console_manuscript_planning(request: Request, db: Session = Depends(get_db))
     if not user:
         return _redirect("/select-mode")
     return templates.TemplateResponse(
-        "console_manuscript_planning.html",
-        _console_page_context(request, db, user, active_nav="manuscript_planning", workspace_section="planning"),
+        request=request,
+        name="console_manuscript_planning.html",
+        context=_console_page_context(request, db, user, active_nav="manuscript_planning", workspace_section="planning"),
     )
 
 
@@ -3642,7 +3645,7 @@ def console_storyboard(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_storyboard.html", _console_context(request, db, user, active_nav="storyboard"))
+    return templates.TemplateResponse(request=request, name="console_storyboard.html", context=_console_context(request, db, user, active_nav="storyboard"))
 
 
 @app.get("/console/characters")
@@ -3650,7 +3653,7 @@ def console_characters(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_characters.html", _console_context(request, db, user, active_nav="characters"))
+    return templates.TemplateResponse(request=request, name="console_characters.html", context=_console_context(request, db, user, active_nav="characters"))
 
 
 @app.get("/console/world")
@@ -3658,7 +3661,7 @@ def console_world(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_world.html", _console_context(request, db, user, active_nav="world"))
+    return templates.TemplateResponse(request=request, name="console_world.html", context=_console_context(request, db, user, active_nav="world"))
 
 
 @app.get("/console/style")
@@ -3666,7 +3669,7 @@ def console_style(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_style.html", _console_context(request, db, user, active_nav="style"))
+    return templates.TemplateResponse(request=request, name="console_style.html", context=_console_context(request, db, user, active_nav="style"))
 
 
 @app.get("/console/skills")
@@ -3674,7 +3677,7 @@ def console_skills(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_skills.html", _console_context(request, db, user, active_nav="skills"))
+    return templates.TemplateResponse(request=request, name="console_skills.html", context=_console_context(request, db, user, active_nav="skills"))
 
 
 @app.post("/capabilities/{slug}/toggle")
@@ -3716,7 +3719,7 @@ def console_mcp(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_mcp.html", _console_context(request, db, user, active_nav="mcp"))
+    return templates.TemplateResponse(request=request, name="console_mcp.html", context=_console_context(request, db, user, active_nav="mcp"))
 
 
 @app.get("/console/agents")
@@ -3724,7 +3727,7 @@ def console_agents(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_agents.html", _console_context(request, db, user, active_nav="agents"))
+    return templates.TemplateResponse(request=request, name="console_agents.html", context=_console_context(request, db, user, active_nav="agents"))
 
 
 @app.get("/console/models")
@@ -3732,7 +3735,7 @@ def console_models(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_models.html", _console_context(request, db, user, active_nav="models"))
+    return templates.TemplateResponse(request=request, name="console_models.html", context=_console_context(request, db, user, active_nav="models"))
 
 
 @app.get("/console/env")
@@ -3765,7 +3768,7 @@ def console_env(request: Request, db: Session = Depends(get_db)):
         "web_enable_static_kb": os.getenv("WEB_ENABLE_STATIC_KB", "0"),
         "turning_point_enabled": os.getenv("TURNING_POINT_ENABLED", "1"),
     }
-    return templates.TemplateResponse("console_env.html", ctx)
+    return templates.TemplateResponse(request=request, name="console_env.html", context=ctx)
 
 
 @app.post("/console/env/save")
@@ -3902,7 +3905,7 @@ def console_status(request: Request, db: Session = Depends(get_db)):
     user = _current_user(request, db)
     if not user:
         return _redirect("/select-mode")
-    return templates.TemplateResponse("console_status.html", _console_context(request, db, user, active_nav="status"))
+    return templates.TemplateResponse(request=request, name="console_status.html", context=_console_context(request, db, user, active_nav="status"))
 
 
 @app.post("/ui-language")
