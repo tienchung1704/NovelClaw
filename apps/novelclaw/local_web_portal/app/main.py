@@ -88,6 +88,23 @@ _VI_FALLBACKS: Dict[str, str] = {
     "Assets": "Tài nguyên",
     "Manuscripts": "Bản thảo",
     "Drafts & Memory": "Bản thảo & Bộ nhớ",
+    "Conversation": "Hội thoại",
+    "Studio": "Xưởng sáng tác",
+    "Read": "Đọc",
+    "Outline": "Dàn ý",
+    "Planning": "Lập kế hoạch",
+    "Story Premise": "Tiền đề truyện",
+    "Author Brief": "Yêu cầu tác giả",
+    "Chapter Planning": "Quy hoạch chương",
+    "Revision Loop": "Vòng sửa đổi",
+    "Canon State": "Trạng thái thiết lập",
+    "Runtime": "Thời gian chạy",
+    "Craft tools": "Công cụ sáng tác",
+    "Current status": "Trạng thái hiện tại",
+    "Active session": "Phiên hoạt động",
+    "Chapters": "Chương",
+    "System": "Hệ thống",
+    "System and capability": "Hệ thống và năng lực",
     "Characters": "Nhân vật",
     "World": "Thế giới quan",
     "Capabilities": "Khả năng",
@@ -3629,8 +3646,9 @@ def console_memory_zone(slug: str, request: Request, db: Session = Depends(get_d
         slug = "premise"
     zh, en, desc = _MEMORY_ZONE_META[slug]
     return templates.TemplateResponse(
-        "console_memory_zone.html",
-        _console_page_context(
+        request=request,
+        name="console_memory_zone.html",
+        context=_console_page_context(
             request, db, user,
             active_nav=f"memory_zone_{slug}",
             workspace_section="entries",
