@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
 from dataclasses import dataclass
@@ -198,7 +198,7 @@ def dump_state(state: Dict[str, Any]) -> str:
 
 def _build_client(spec: ProviderRuntime, api_key: str, preferred_language: str) -> LLMClient:
     cfg = Config(require_api_key=False)
-    cfg.language = preferred_language if preferred_language in {"en", "zh"} else "en"
+    cfg.language = preferred_language if preferred_language in {"en", "zh", "vi"} else "en"
     cfg.llm_provider = spec.slug
     cfg.api_key = api_key
     cfg.api_base_url = spec.base_url
@@ -283,6 +283,7 @@ def _normalize_turn(parsed: Dict[str, Any], fallback_refined: str, fallback_text
         or (
             "Please refine the premise, constraints, and intended output."
             if preferred_language == "en"
+            else "Vui lòng làm rõ tiền đề, các hạn chế và kết quả mong muốn." if preferred_language == "vi"
             else "请进一步明确故事前提、限制条件和预期输出。"
         )
     ).strip()
@@ -296,6 +297,7 @@ def _normalize_turn(parsed: Dict[str, Any], fallback_refined: str, fallback_text
         or (
             "Keep clarifying the premise, world rules, character arcs, and style goals."
             if preferred_language == "en"
+            else "Hãy tiếp tục làm rõ tiền đề, quy tắc thế giới, tuyến nhân vật và mục tiêu phong cách." if preferred_language == "vi"
             else "请继续补充故事前提、世界规则、人物弧线和风格目标。"
         )
     ).strip()
@@ -309,7 +311,7 @@ def _normalize_turn(parsed: Dict[str, Any], fallback_refined: str, fallback_text
         "questions": questions,
         "readiness": readiness,
         "ready_hint": ready_hint[:600],
-        "language": language if language in {"en", "zh"} else preferred_language,
+        "language": language if language in {"en", "zh", "vi"} else preferred_language,
         "style_targets": style_targets,
         "memory_targets": memory_targets,
     }
@@ -324,6 +326,7 @@ def _fallback_turn(state: Dict[str, Any], original_idea: str, raw_response: str)
         fallback_text=raw_response or (
             "I need a bit more detail about the story, style, and constraints before moving forward."
             if preferred_language == "en"
+            else "Tôi cần thêm một chút chi tiết về cốt truyện, phong cách và các hạn chế trước khi có thể tiếp tục." if preferred_language == "vi"
             else "在继续之前，我还需要更多关于故事、风格和硬性约束的细节。"
         ),
         preferred_language=preferred_language,
@@ -345,7 +348,12 @@ def generate_assistant_turn(
     current_refined = str(state.get("refined_idea") or "").strip() or original_idea.strip()
     history = _history_text(state.get("messages") or [])
 
-    output_lang = "English" if preferred_language == "en" else "Chinese"
+    if preferred_language == "vi":
+        output_lang = "Vietnamese"
+    elif preferred_language == "zh":
+        output_lang = "Chinese"
+    else:
+        output_lang = "English"
     system_prompt = f"""You are NovelClaw's collaborative ideation agent.
 Goal: turn a raw story idea into a stable writing brief that can drive a real agentic writing loop.
 Rules:
@@ -423,7 +431,7 @@ def append_user_reply(state: Dict[str, Any], reply: str) -> Dict[str, Any]:
     msgs.append({"role": "user", "content": content[:3000]})
     out["messages"] = msgs[-30:]
     detected = detect_language(content)
-    if detected in {"en", "zh"}:
+    if detected in {"en", "zh", "vi"}:
         out["preferred_language"] = detected
         out["source_language"] = detected
     return out
@@ -437,7 +445,7 @@ def append_assistant_turn(state: Dict[str, Any], turn: Dict[str, Any]) -> Dict[s
     out["refined_idea"] = str(turn.get("refined_idea") or out.get("refined_idea") or "")
     out["round"] = int(out.get("round", 0) or 0) + 1
     turn_lang = str(turn.get("language") or "").lower()
-    if turn_lang in {"en", "zh"}:
+    if turn_lang in {"en", "zh", "vi"}:
         out["preferred_language"] = turn_lang
     return out
 
@@ -452,6 +460,7 @@ def latest_assistant_turn(state: Dict[str, Any]) -> Dict[str, Any]:
         "analysis": (
             "Start a writing session and I will refine the idea into a stronger writing brief."
             if str(state.get("preferred_language") or "en").lower() == "en"
+            else "Hãy bắt đầu phiên viết, tôi sẽ hoàn thiện ý tưởng thành một bản tóm tắt viết lách tốt hơn." if str(state.get("preferred_language") or "en").lower() == "vi"
             else "开始一个写作会话后，我会把你的想法打磨成更稳定、更可执行的写作 brief。"
         ),
         "refined_idea": state.get("refined_idea") or "",
@@ -497,9 +506,10 @@ def build_generation_idea(original_idea: str, state: Dict[str, Any]) -> str:
     source_language = str(state.get("source_language") or preferred_language or "en").lower()
     translation_mode = str(state.get("translation_mode") or "follow_input")
     is_en = preferred_language == "en"
+    is_vi = preferred_language == "vi"
 
-    question_prefix = "Q" if is_en else "问"
-    answer_prefix = "A" if is_en else "答"
+    question_prefix = "Q" if is_en else "Hỏi" if is_vi else "问"
+    answer_prefix = "A" if is_en else "Đáp" if is_vi else "答"
     qa_localized: List[str] = []
     for line in qa:
         if line.startswith("Q: "):
@@ -509,13 +519,18 @@ def build_generation_idea(original_idea: str, state: Dict[str, Any]) -> str:
         else:
             qa_localized.append(line)
 
-    header = "[NovelClaw generation brief]" if is_en else "[NovelClaw 生成简报]"
+    header = "[NovelClaw generation brief]" if is_en else "[Bản tóm tắt tạo truyện NovelClaw]" if is_vi else "[NovelClaw 生成简报]"
     language_profile = (
         "[language profile]\n"
         f"preferred_output_language: {preferred_language}\n"
         f"source_language: {source_language}\n"
         f"translation_mode: {translation_mode}"
         if is_en
+        else "[Hồ sơ ngôn ngữ]\n"
+        f"Ngôn ngữ ưu tiên: {preferred_language}\n"
+        f"Ngôn ngữ gốc: {source_language}\n"
+        f"Chế độ dịch: {translation_mode}"
+        if is_vi
         else "[语言配置]\n"
         f"首选输出语言: {preferred_language}\n"
         f"源语言: {source_language}\n"
@@ -524,14 +539,12 @@ def build_generation_idea(original_idea: str, state: Dict[str, Any]) -> str:
     style_block = ""
     if style_targets:
         style_block = (
-            "\n\n[style targets]\n" if is_en else "\n\n[风格目标]\n"
-        ) + "\n".join(f"- {item}" for item in style_targets[:10])
+            ("\n\n[style targets]\n" if is_en else "\n\n[Mục tiêu phong cách]\n" if is_vi else "\n\n[风格目标]\n") + "\n".join(f"- {item}" for item in style_targets[:10])
     memory_block = ""
     if memory_targets:
         memory_block = (
-            "\n\n[memory targets]\n" if is_en else "\n\n[记忆目标]\n"
-        ) + "\n".join(f"- {item}" for item in memory_targets[:10])
-    execution_header = "[execution preference]" if is_en else "[执行偏好]"
+            ("\n\n[memory targets]\n" if is_en else "\n\n[Mục tiêu trí nhớ]\n" if is_vi else "\n\n[记忆目标]\n") + "\n".join(f"- {item}" for item in memory_targets[:10])
+    execution_header = "[execution preference]" if is_en else "[Tùy chọn hiển thị]\n" if is_vi else "[执行偏好]"
     execution_block = (
         f"\n\n{execution_header}\n"
         f"generation_scope: {generation_preferences['generation_scope']}\n"
@@ -541,6 +554,6 @@ def build_generation_idea(original_idea: str, state: Dict[str, Any]) -> str:
     )
     if qa_localized:
         qa_text = "\n".join(qa_localized[-16:])
-        qa_header = "[recent ideation QA]" if is_en else "[最近构思问答]"
+        qa_header = "[recent ideation QA]" if is_en else "[Hỏi đáp mới nhất]" if is_vi else "[最近构思问答]"
         return f"{header}\n{refined}\n\n{language_profile}{style_block}{memory_block}{execution_block}\n\n{qa_header}\n{qa_text}".strip()
     return f"{header}\n{refined}\n\n{language_profile}{style_block}{memory_block}{execution_block}".strip()
