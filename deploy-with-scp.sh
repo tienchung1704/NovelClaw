@@ -7,7 +7,7 @@
 set -e
 
 SERVER="netviet@192.168.1.20"
-TARGET_DIR="/data/subtitle/NovelClaw"
+TARGET_DIR="/home/netviet/projects/NovelClaw"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMP_DIR="/tmp/novelclaw_deploy_$$"
 
@@ -27,7 +27,7 @@ echo "Copying files to temp directory..."
 rsync -a --exclude='.git/' --exclude='__pycache__/' --exclude='*.pyc' \
   --exclude='.env' --exclude='node_modules/' --exclude='.venv/' \
   --exclude='.venv-shared/' --exclude='venv/' --exclude='.local-dev-secrets/' \
-  --exclude='*.log' --exclude='deploy-*.sh' \
+  --exclude='*.log' --exclude='deploy-to-new-server.sh' --exclude='deploy-with-scp.sh' \
   "$SCRIPT_DIR/" "$TEMP_DIR/" 2>/dev/null || \
 cp -r "$SCRIPT_DIR"/* "$TEMP_DIR/" 2>/dev/null
 

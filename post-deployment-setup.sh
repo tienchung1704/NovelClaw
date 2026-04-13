@@ -6,7 +6,7 @@
 
 set -e
 
-PROJECT_DIR="/data/subtitle/NovelClaw"
+PROJECT_DIR="/home/netviet/projects/NovelClaw"
 
 echo "=========================================="
 echo "NovelClaw Post-Deployment Setup"
@@ -40,8 +40,30 @@ fi
 echo ""
 echo "[4/8] Installing Python dependencies..."
 source .venv-shared/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
+
+# Upgrade pip
+pip install --upgrade pip setuptools wheel
+
+# Function to install requirements (skip heavy ML packages)
+install_requirements() {
+    local req_file=$1
+    if [ -f "$req_file" ]; then
+        echo "Installing from $req_file..."
+        # Skip heavy ML packages like torch, transformers, etc.
+        grep -v -E "^(sentence-transformers|torch|torchvision|torchaudio|transformers|safetensors|scikit-learn|scipy|threadpoolctl|joblib|networkx)" "$req_file" | \
+        grep -v "^#" | grep -v "^$" > /tmp/requirements_lite.txt
+        pip install -r /tmp/requirements_lite.txt || echo "Warning: Some packages failed to install from $req_file"
+        rm -f /tmp/requirements_lite.txt
+    fi
+}
+
+# Install from all app requirements
+install_requirements "apps/auth-portal/requirements.txt"
+install_requirements "apps/multiagent/requirements.txt"
+install_requirements "apps/multiagent/local_web_portal/requirements.txt"
+install_requirements "apps/novelclaw/requirements.txt"
+install_requirements "apps/novelclaw/local_web_portal/requirements.txt"
+
 deactivate
 echo "✓ Python dependencies installed"
 
