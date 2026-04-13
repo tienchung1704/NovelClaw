@@ -2,32 +2,32 @@ module.exports = {
   apps: [
     {
       name: 'novelclaw-portal',
-      script: '/home/netviet/NovelClaw/.venv-shared/bin/uvicorn',
+      script: '/home/netviet/projects/NovelClaw/.venv-shared/bin/uvicorn',
       args: 'app.main:app --host 0.0.0.0 --port 8010',
-      cwd: '/home/netviet/NovelClaw/apps/auth-portal/local_web_portal',
+      cwd: '/home/netviet/projects/NovelClaw/apps/auth-portal/local_web_portal',
       interpreter: 'none',
       env: {
-        PYTHONPATH: '/home/netviet/NovelClaw/apps/auth-portal/local_web_portal:/home/netviet/NovelClaw/apps/auth-portal'
+        PYTHONPATH: '/home/netviet/projects/NovelClaw/apps/auth-portal/local_web_portal:/home/netviet/projects/NovelClaw/apps/auth-portal'
       }
     },
     {
       name: 'novelclaw-multiagent',
-      script: '/home/netviet/NovelClaw/.venv-shared/bin/uvicorn',
+      script: '/home/netviet/projects/NovelClaw/.venv-shared/bin/uvicorn',
       args: 'app.main:app --host 0.0.0.0 --port 8011',
-      cwd: '/home/netviet/NovelClaw/apps/multiagent/local_web_portal',
+      cwd: '/home/netviet/projects/NovelClaw/apps/multiagent/local_web_portal',
       interpreter: 'none',
       env: {
-        PYTHONPATH: '/home/netviet/NovelClaw/apps/multiagent/local_web_portal:/home/netviet/NovelClaw/apps/multiagent'
+        PYTHONPATH: '/home/netviet/projects/NovelClaw/apps/multiagent/local_web_portal:/home/netviet/projects/NovelClaw/apps/multiagent'
       }
     },
     {
       name: 'novelclaw-main',
-      script: '/home/netviet/NovelClaw/.venv-shared/bin/uvicorn',
+      script: '/home/netviet/projects/NovelClaw/.venv-shared/bin/uvicorn',
       args: 'app.main:app --host 0.0.0.0 --port 8036',
-      cwd: '/home/netviet/NovelClaw/apps/novelclaw/local_web_portal',
+      cwd: '/home/netviet/projects/NovelClaw/apps/novelclaw/local_web_portal',
       interpreter: 'none',
       env: {
-        PYTHONPATH: '/home/netviet/NovelClaw/apps/novelclaw/local_web_portal:/home/netviet/NovelClaw/apps/novelclaw'
+        PYTHONPATH: '/home/netviet/projects/NovelClaw/apps/novelclaw/local_web_portal:/home/netviet/projects/NovelClaw/apps/novelclaw'
       }
     }
   ]
